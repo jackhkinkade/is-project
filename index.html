@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jack Kinkade | Information Systems Project</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body { background-color: #f8f9fa; }
+    .hero {
+      background: linear-gradient(135deg, rgba(13,110,253,.9), rgba(13,202,240,.75)),
+      url('https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+      color: white;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+    }
+    .section-card { border: 0; border-radius: 1rem; box-shadow: 0 10px 24px rgba(0,0,0,.08); }
+    .icon-circle {
+      width: 58px; height: 58px; border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: #e9f2ff; font-size: 1.5rem;
+    }
+    footer { background: #0b1220; color: #dce3ef; }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">Jack Kinkade</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="resume.html">Résumé</a></li>
+          <li class="nav-item"><a class="nav-link" href="scratch.html">From Scratch Page</a></li>
+          <li class="nav-item"><a class="nav-link" href="app.html">Web App</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container py-5">
+      <div class="row align-items-center">
+        <div class="col-lg-7">
+          <p class="text-uppercase fw-semibold mb-2">IS 201 Final Web Development Project</p>
+          <h1 class="display-4 fw-bold">Jack Kinkade</h1>
+          <p class="lead mt-3">Information Systems student at BYU interested in business technology, analytics, systems thinking, and practical problem solving.</p>
+          <div class="d-flex gap-3 mt-4 flex-wrap">
+            <a href="resume.html" class="btn btn-light btn-lg">View Résumé</a>
+            <a href="scratch.html" class="btn btn-outline-light btn-lg">Open Scratch Page</a>
+          </div>
+        </div>
+        <div class="col-lg-5 mt-4 mt-lg-0">
+          <div class="card section-card">
+            <div class="card-body p-4">
+              <h2 class="h4">Project Highlights</h2>
+              <ul class="mb-0">
+                <li>Professional Bootstrap-based pages</li>
+                <li>HTML résumé built from real experience</li>
+                <li>From-scratch page with custom CSS</li>
+                <li>Interactive Tableau visualization</li>
+                <li>Custom one-page web app</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="container py-5">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card section-card h-100">
+            <div class="card-body p-4">
+              <div class="icon-circle mb-3">💼</div>
+              <h3 class="h4">Professional Pages</h3>
+              <p class="mb-3">A polished layout built with Bootstrap to present information clearly and professionally.</p>
+              <a href="resume.html" class="btn btn-primary">Go to Résumé</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card section-card h-100">
+            <div class="card-body p-4">
+              <div class="icon-circle mb-3">🛠️</div>
+              <h3 class="h4">From-Scratch HTML</h3>
+              <p class="mb-3">A custom page about basketball, mindset, and a 4Runner build, created from a blank HTML file with original CSS.</p>
+              <a href="scratch.html" class="btn btn-primary">Visit Scratch Page</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card section-card h-100">
+            <div class="card-body p-4">
+              <div class="icon-circle mb-3">🎮</div>
+              <h3 class="h4">Interactive Web App</h3>
+              <p class="mb-3">A one-page 4Runner build budget app that estimates modification totals and gives suggestions.</p>
+              <a href="app.html" class="btn btn-primary">Launch App</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container pb-5">
+      <div class="card section-card">
+        <div class="card-body p-4 p-lg-5">
+          <h2 class="mb-3">About This Site</h2>
+          <p>This website was created for an Information Systems web development project. It reflects key course ideas such as design, analytics, systems thinking, and using technology to solve business problems. The site includes an HTML résumé, a custom-built page demonstrating core HTML and CSS skills, and a small app that shows practical interactivity with JavaScript.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-4">
+    <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
+      <div>© 2026 Jack Kinkade</div>
+      <div>
+        <a href="index.html" class="text-decoration-none text-light me-3">Home</a>
+        <a href="resume.html" class="text-decoration-none text-light me-3">Résumé</a>
+        <a href="scratch.html" class="text-decoration-none text-light me-3">Scratch</a>
+        <a href="app.html" class="text-decoration-none text-light">Web App</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

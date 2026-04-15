@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4Runner Build Budget App</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #edf4ff, #dce8fb);
+      color: #132238;
+    }
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 18px 60px;
+    }
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+      margin-bottom: 22px;
+    }
+    h1, h2 { margin-top: 0; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    label { font-weight: bold; display: block; margin-bottom: 8px; }
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #bcc8d8;
+      border-radius: 10px;
+      box-sizing: border-box;
+      font-size: 1rem;
+    }
+    button {
+      background: #0d6efd;
+      color: white;
+      border: 0;
+      border-radius: 10px;
+      padding: 13px 18px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-right: 10px;
+      margin-top: 10px;
+    }
+    button.secondary {
+      background: #5c6777;
+    }
+    .result {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+    .tag {
+      display: inline-block;
+      background: #e8f1ff;
+      color: #0d4ca3;
+      padding: 8px 12px;
+      border-radius: 999px;
+      margin: 6px 8px 0 0;
+      font-size: 0.95rem;
+    }
+    .nav a {
+      color: #0d4ca3;
+      text-decoration: none;
+      margin-right: 16px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card nav">
+      <a href="index.html">Home</a>
+      <a href="resume.html">Résumé</a>
+      <a href="scratch.html">Scratch Page</a>
+    </div>
+
+    <div class="card">
+      <h1>4Runner Build Budget App</h1>
+      <p>This one-page app estimates the total cost of a 4Runner build and gives quick recommendations based on your goals. It was built with HTML, CSS, and JavaScript in a single page.</p>
+    </div>
+
+    <div class="card">
+      <h2>Build inputs</h2>
+      <div class="grid">
+        <div>
+          <label for="lift">Lift setup</label>
+          <select id="lift">
+            <option value="0">Keep current suspension — $0</option>
+            <option value="550">Spacer lift — $550</option>
+            <option value="1400">Bilstein / Eibach style setup — $1,400</option>
+            <option value="2600">Premium coilover build — $2,600</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="tires">Tires</label>
+          <select id="tires">
+            <option value="0">Keep current tires — $0</option>
+            <option value="900">33-inch all-terrain tires — $900</option>
+            <option value="1250">Premium 33-inch all-terrain tires — $1,250</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="wheels">Wheels / spacers</label>
+          <select id="wheels">
+            <option value="0">No change — $0</option>
+            <option value="160">Wheel spacers — $160</option>
+            <option value="850">New wheels — $850</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="extras">Exterior extras</label>
+          <select id="extras">
+            <option value="0">None — $0</option>
+            <option value="350">Tint + blackout details — $350</option>
+            <option value="900">Bumper / lighting combo — $900</option>
+            <option value="1700">Rack + lighting + styling package — $1,700</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="budget">Your budget ($)</label>
+          <input type="number" id="budget" value="3000" min="0">
+        </div>
+
+        <div>
+          <label for="goal">Main goal</label>
+          <select id="goal">
+            <option value="style">Aggressive style</option>
+            <option value="daily">Daily-driver comfort</option>
+            <option value="trail">Trail capability</option>
+            <option value="balanced">Balanced build</option>
+          </select>
+        </div>
+      </div>
+
+      <button onclick="calculateBuild()">Calculate Build</button>
+      <button class="secondary" onclick="resetBuild()">Reset</button>
+    </div>
+
+    <div class="card">
+      <h2>Results</h2>
+      <div id="result" class="result">
+        Pick your options and click <strong>Calculate Build</strong>.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function calculateBuild() {
+      const lift = Number(document.getElementById('lift').value);
+      const tires = Number(document.getElementById('tires').value);
+      const wheels = Number(document.getElementById('wheels').value);
+      const extras = Number(document.getElementById('extras').value);
+      const budget = Number(document.getElementById('budget').value || 0);
+      const goal = document.getElementById('goal').value;
+
+      const total = lift + tires + wheels + extras;
+      const difference = budget - total;
+
+      let recommendation = '';
+      let tags = [];
+
+      if (goal === 'style') {
+        recommendation = 'Focus on stance, wheels, and visual upgrades first. A moderate lift with tires usually gives the biggest style jump.';
+        tags = ['best for looks', 'street-friendly', 'easy visual upgrade'];
+      } else if (goal === 'daily') {
+        recommendation = 'Keep the setup practical. Avoid going too tall or too heavy if comfort and reliability matter most.';
+        tags = ['comfortable', 'lower maintenance', 'daily use'];
+      } else if (goal === 'trail') {
+        recommendation = 'Prioritize quality suspension and tires before cosmetic parts. Capability usually starts with traction and clearance.';
+        tags = ['performance first', 'better clearance', 'trail-focused'];
+      } else {
+        recommendation = 'A balanced build usually means a moderate suspension upgrade, 33-inch tires, and a few clean styling changes.';
+        tags = ['balanced', 'versatile', 'good value'];
+      }
+
+      let budgetMessage = '';
+      if (difference > 0) {
+        budgetMessage = `You are <strong>$${difference.toLocaleString()}</strong> under budget.`;
+      } else if (difference < 0) {
+        budgetMessage = `You are <strong>$${Math.abs(difference).toLocaleString()}</strong> over budget.`;
+      } else {
+        budgetMessage = 'You are exactly on budget.';
+      }
+
+      const tagHtml = tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+
+      document.getElementById('result').innerHTML = `
+        <p><strong>Estimated total build cost:</strong> $${total.toLocaleString()}</p>
+        <p>${budgetMessage}</p>
+        <p><strong>Recommendation:</strong> ${recommendation}</p>
+        <div>${tagHtml}</div>
+      `;
+    }
+
+    function resetBuild() {
+      document.getElementById('lift').value = '0';
+      document.getElementById('tires').value = '0';
+      document.getElementById('wheels').value = '0';
+      document.getElementById('extras').value = '0';
+      document.getElementById('budget').value = '3000';
+      document.getElementById('goal').value = 'style';
+      document.getElementById('result').innerHTML = 'Pick your options and click <strong>Calculate Build</strong>.';
+    }
+  </script>
+</body>
+</html>
